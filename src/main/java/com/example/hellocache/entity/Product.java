@@ -1,5 +1,6 @@
 package com.example.hellocache.entity;
 
+import com.example.hellocache.controller.request.ProductRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -38,13 +39,23 @@ public class Product extends BaseEntity {
     }
 
     public Product(
-        final Long id,
-        final String name,
-        final String description,
-        final String price,
-        final Long quantity,
-        final Instant startTime,
-        final Instant endTime
+            final Long id,
+            final String name,
+            final String description,
+            final String price,
+            final Long quantity
+    ) {
+        this(id, name, description, price, quantity, Instant.now(), Instant.now());
+    }
+
+    public Product(
+            final Long id,
+            final String name,
+            final String description,
+            final String price,
+            final Long quantity,
+            final Instant startTime,
+            final Instant endTime
     ) {
         this.id = id;
         this.name = name;
@@ -53,6 +64,14 @@ public class Product extends BaseEntity {
         this.quantity = quantity;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    public void update(final ProductRequest request) {
+        this.name = request.name();
+        this.description = request.description();
+        this.price = request.price();
+        this.quantity = request.quantity();
+        this.updatedAt = Instant.now();
     }
 
     public Long getId() {
