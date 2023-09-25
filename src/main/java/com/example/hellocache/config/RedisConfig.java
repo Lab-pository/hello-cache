@@ -56,7 +56,7 @@ public class RedisConfig {
     }
 
     @Bean
-    public CacheManager cacheManager(final RedisConnectionFactory redisConnectionFactory) {
+    public CacheManager redisCacheManager(final RedisConnectionFactory redisConnectionFactory) {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
             .serializeKeysWith(fromSerializer(new StringRedisSerializer()))
             .serializeValuesWith(fromSerializer(new GenericJackson2JsonRedisSerializer()))
