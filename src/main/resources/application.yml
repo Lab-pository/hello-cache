@@ -4,7 +4,7 @@ spring:
       ddl-auto: validate
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mock_test
+    url: jdbc:mysql://localhost:3306/hello_cache
     username: user
     password: password
   cache:
