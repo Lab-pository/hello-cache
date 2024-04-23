@@ -1,0 +1,5 @@
+### GET Cached Products v1
+GET http://localhost:8080/v1/products/cache
+
+### GET Cached Products v2
+GET http://localhost:8080/v2/products/cache?productId=2

@@ -1,0 +1,8 @@
+### GET Products v1
+GET http://localhost:8080/v1/products
+
+### GET Products v2
+GET http://localhost:8080/v2/products
+
+### GET Products v3
+GET http://localhost:8080/v3/products
