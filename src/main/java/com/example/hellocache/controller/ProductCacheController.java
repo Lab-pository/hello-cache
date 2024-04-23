@@ -1,11 +1,12 @@
 package com.example.hellocache.controller;
 
-import com.example.hellocache.controller.response.ProductsResponse;
-import com.example.hellocache.service.ProductCacheService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.hellocache.controller.response.ProductsResponse;
+import com.example.hellocache.service.ProductCacheService;
 
 @RestController
 public class ProductCacheController {
@@ -18,8 +19,8 @@ public class ProductCacheController {
 
     @GetMapping("/v1/products/cache")
     public ResponseEntity<ProductsResponse> getProductsWithPageAndCache(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size
+            @RequestParam(defaultValue = "0") final int page,
+            @RequestParam(defaultValue = "10") final int size
     ) {
         final ProductsResponse products = productCacheService.getProductsWithPageAndRedisCache(page, size);
 
@@ -28,8 +29,8 @@ public class ProductCacheController {
 
     @GetMapping("/v2/products/cache")
     public ResponseEntity<ProductsResponse> getProductsWithCursorAndCache(
-            @RequestParam Long productId,
-            @RequestParam int size
+            @RequestParam(defaultValue = "0") final Long productId,
+            @RequestParam(defaultValue = "10") final int size
     ) {
         final ProductsResponse products = productCacheService.getProductsWithCursorAndRedisCache(productId, size);
 

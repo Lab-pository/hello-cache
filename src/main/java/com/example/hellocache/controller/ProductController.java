@@ -1,11 +1,12 @@
 package com.example.hellocache.controller;
 
-import com.example.hellocache.controller.response.ProductsResponse;
-import com.example.hellocache.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.hellocache.controller.response.ProductsResponse;
+import com.example.hellocache.service.ProductService;
 
 @RestController
 public class ProductController {
@@ -18,8 +19,8 @@ public class ProductController {
 
     @GetMapping("/v1/products")
     public ResponseEntity<ProductsResponse> getProductsWithPage(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size
+            @RequestParam(defaultValue = "0") final int page,
+            @RequestParam(defaultValue = "10") final int size
     ) {
         final ProductsResponse products = productService.getProductsWithPage(page, size);
 
@@ -28,8 +29,8 @@ public class ProductController {
 
     @GetMapping("/v2/products")
     public ResponseEntity<ProductsResponse> getProductsWithSize(
-            @RequestParam int page,
-            @RequestParam int size
+            @RequestParam(defaultValue = "0") final int page,
+            @RequestParam(defaultValue = "10") final int size
     ) {
         final ProductsResponse products = productService.getProductsWithSize(page, size);
 
@@ -38,8 +39,8 @@ public class ProductController {
 
     @GetMapping("/v3/products")
     public ResponseEntity<ProductsResponse> getProductsWithCursor(
-            @RequestParam Long productId,
-            @RequestParam int size
+            @RequestParam(defaultValue = "0") final Long productId,
+            @RequestParam(defaultValue = "10") final int size
     ) {
         final ProductsResponse products = productService.getProductsWithCursor(productId, size);
 
